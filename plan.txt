@@ -35,5 +35,10 @@ cordy.py:
 	socket send message to chase_cat
 	interrupt chase_cat
 	periodically read file to update node status and timestamp
+
+
+nessary command:
+import   os
+os.system( 'ls' )   ||   str   =   os.popen( "ls" ).read()
 	
 
