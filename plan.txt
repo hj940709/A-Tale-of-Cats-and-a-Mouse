@@ -1,0 +1,39 @@
+初始化：
+获取可以使用节点
+	测试节点
+	写入文件-ukkonodes
+	15-20个（20个）
+
+启动:
+	mouse.py The mouse
+	chase_cat.py For Catty and Jazzy
+	listy.py For Listy
+	cordy.py For Cordy
+	randomly choose node for mouse, listy and cordy
+
+
+mouse.py:
+	socket listening
+	socket response
+
+chase_cat.py:
+	command line interface parameter
+	identity storage
+	current node storage
+	socket connection test
+	socket send message to mouse and to listy
+	sleeping
+
+listy.py:
+	socket response
+	file write in (cmsg): message about node time if mouse exist in this node
+	
+cordy.py:
+	timestamp of the latest message in cmsg
+	internal list node status: can be an array of name and status(checked,checking by catty or jazzy)
+	ssh remote command to start chase_cat.py
+	socket send message to chase_cat
+	interrupt chase_cat
+	periodically read file to update node status and timestamp
+	
+
