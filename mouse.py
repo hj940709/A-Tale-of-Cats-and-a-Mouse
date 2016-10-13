@@ -11,7 +11,6 @@ def init():
 		if len(str_arr)>0 and str_arr[1] == 'mouse':
 			port = int(str_arr[0])
 			break
-	ukkos = linecache.getlines('ukkonodes')
 	host = socket.gethostname()
 	return (host,port)
 
