@@ -29,4 +29,4 @@ while True:
 	if msg =='MEOW':
 		time.sleep(8)
 		conn.send(bytes('OUCH','UTF-8'))
-		exit()
+		break

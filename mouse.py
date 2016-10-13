@@ -12,7 +12,7 @@ def init():
 			port = int(str_arr[0])
 			break
 	ukkos = linecache.getlines('ukkonodes')
-	host = ukkos[random.randrange(0,len(ukkos))].strip()
+	host = socket.gethostname()
 	return (host,port)
 
 (host,port) = init()
