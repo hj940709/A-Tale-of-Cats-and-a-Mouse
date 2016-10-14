@@ -1,4 +1,4 @@
-import socket,_thread
+import socket,linecache
 
 def init():
 #create of empty cmsg file
