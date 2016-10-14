@@ -22,10 +22,11 @@ s.listen(5)
 while True:
 	conn, addr = s.accept()
 	msg = str(conn.recv(1024)).strip()
-	msg = string[2:len(string)-1]
+	msg = msg[2:len(msg)-1]
 	if msg!='' :
 		continue
 	else:
 		f = open('cmsg','w+')
 		f.write(msg+'\n')
+		f.flush()
 		f.close()
