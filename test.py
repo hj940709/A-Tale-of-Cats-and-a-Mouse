@@ -10,8 +10,9 @@ host = socket.gethostname()
 10005 Cordy
 '''
 
-port=10004
+port=10001
+print(host,port)
 if s.connect_ex((host,port)) == 0: 
-	message = "test"
+	message = "MEOW"
 	s.send(bytes(message,'UTF-8'))
-	print()
+	print(s.recv(1024))
