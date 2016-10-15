@@ -19,7 +19,6 @@ mouse.py:
 chase_cat.py:
 	command line interface parameter
 	identity storage
-	current node storage
 	socket connection test
 	socket send message to mouse and to listy
 	sleeping
