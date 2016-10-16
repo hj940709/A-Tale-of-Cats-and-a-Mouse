@@ -70,12 +70,12 @@ def operation(msg):
 	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]:
 		ukko += 1
 	global nodelist,cat,timestamp
-	if info = "G":
+	if info == "G":
 		exit()
-	elif info = "NF":
+	elif info == "NF":
 		cat[cname] = "p"
 		nodelist.remove(nodelist[ukko])
-	elif info = "F":
+	elif info == "F":
 		cat[cname] = "w"
 		if nodelist[ukko][1] != "p":
 			nodelist[ukko][1] = "p"
