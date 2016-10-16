@@ -20,7 +20,7 @@ def init():
 #read node file
 	global nodelist
 	for line in linecache.getlines("ukkonodes"):
-		if line.strip() != ""
+		if line.strip() != "":
 			nodelist.append([line.strip(),"u"])
 
 def assign(name,cnode):
