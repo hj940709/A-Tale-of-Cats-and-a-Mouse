@@ -23,6 +23,7 @@ def report(msg):
 #get Listy port and location
 #send message to Listy
 #add timestamp for each message, timestamp is in a number of second format
+
 	s = socket.socket()
 	port = 0
 	for line in linecache.getlines("port_number"):
@@ -32,7 +33,7 @@ def report(msg):
 			break
 	host = linecache.getline("listy_location",1).strip()
 	if s.connect_ex((host,port)) == 0: 
-		s.send(bytes(msg+" "+str(time.time()),"UTF-8"))
+		s.send(bytes(msg,"UTF-8"))
 		s.close()
 
 def search():
@@ -48,7 +49,7 @@ def search():
 			msg = str(s.recv(1024)).strip()
 			msg = msg[2:len(msg)-1]	
 			if msg == "mouse confirmed":
-				flag = true
+				flag = True
 		if flag:
 			report("F "+socket.gethostname()+" "+name)
 		else:
@@ -62,6 +63,7 @@ def attack():
 #attack
 #report the result
 	time.sleep(6)
+	s = socket.socket()
 	if s.connect_ex(getMouseInfo()) == 0: 
 		message = "MEOW"
 		s.send(bytes(message,'UTF-8'))

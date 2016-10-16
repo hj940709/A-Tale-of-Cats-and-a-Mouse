@@ -1,4 +1,9 @@
-import socket,time,linecache,random
+import socket,time,linecache,random,os,_thread
+
+def precaution():
+	time.sleep(3600)
+	os._exit(0)
+_thread.start_new_thread(precaution,())
 
 s = socket.socket()
 
@@ -26,6 +31,6 @@ while True:
 	if msg =="MEOW":
 		time.sleep(8)
 		conn.send(bytes("OUCH","UTF-8"))
-		break
+		exit()
 	elif msg!="" :
 		conn.send(bytes("mouse confirmed","UTF-8")) #mouse positive confirmation

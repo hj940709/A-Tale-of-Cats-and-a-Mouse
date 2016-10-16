@@ -1,4 +1,9 @@
-import socket,linecache
+import socket,linecache,os,time,_thread
+
+def precaution():
+	time.sleep(3600)
+	os._exit(0)
+_thread.start_new_thread(precaution,())
 
 def init():
 #create of empty cmsg file
@@ -20,6 +25,7 @@ s = socket.socket()
 s.bind((host, port))
 s.listen(5)
 while True:
+#message format: (msg),(hostname),(catname),(timestamp)
 	conn, addr = s.accept()
 	msg = str(conn.recv(1024)).strip()
 	msg = msg[2:len(msg)-1]
@@ -27,5 +33,7 @@ while True:
 		continue
 	else:
 		f = open("cmsg","a")
-		f.write(msg+"\n")
+		f.write(msg+" "+str(time.time())+"\n")
 		f.close()
+		if msg.split(' ')[0] == "G":
+			exit(0)
