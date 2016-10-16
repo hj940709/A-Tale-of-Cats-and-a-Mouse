@@ -87,6 +87,8 @@ def operation(msg):
 			#assign Jazzy to attack
 			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+".hpc.cs.helsinki.fi \'python3 chase_cat.py A Jazzy\'")
 	timestamp = msg[3]
+	print(cat)
+	print(nodelist)
 	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
 		assign("Catty",nodelist[ukko])
 	elif cat["Jazzy"] == "p" and cat["Catty"] == "w":
