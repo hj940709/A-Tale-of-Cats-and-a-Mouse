@@ -101,7 +101,9 @@ _thread.start_new_thread(autoAssign,(1,))
 while True:
 	#read cmsg every 2 second
 	time.sleep(2)
-	cmsg = linecache.getlines("cmsg")
+	f = open("cmsg","r")
+	cmsg = f.read().split("\n")
+	f.close()
 	for line in cmsg:
 		msg = line.strip().split(" ")
 		print(msg)
