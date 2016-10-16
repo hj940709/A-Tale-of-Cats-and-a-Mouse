@@ -56,10 +56,10 @@ def autoAssign(interval):
 #auto assign cat to node which is neither under searching nor has been searched
 #if one cat is in waiting state, auto assign will stop
 	while len(nodelist)>0:
-		if cat["Catty"] != "w" or cat["Jazzy"] == "p" and assign("Jazzy",[]) == 2:
+		if cat["Catty"] == "w" or cat["Jazzy"] == "p" and assign("Jazzy",[]) == 2:
 			break
 		time.sleep(interval)
-		if cat["Jazzy"] != "w" or cat["Catty"] == "p" and assign("Catty",[]) == 2:
+		if cat["Jazzy"] == "w" or cat["Catty"] == "p" and assign("Catty",[]) == 2:
 			break
 		time.sleep(interval)
 
