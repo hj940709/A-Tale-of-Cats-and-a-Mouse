@@ -35,6 +35,8 @@ def assign(name,cnode):
 	if counter == len(nodelist):
 		return 2
 	
+	print(name,cnode)
+	
 	#get login user name
 	username = os.popen("who am i").read().split(' ')[0] 
 	node = cnode
