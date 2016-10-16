@@ -73,7 +73,7 @@ def operation(msg):
 	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]:
 		ukko += 1
 	#global nodelist,cat,timestamp
-	print(ukko)
+	print(ukko,msg[1])
 	if info == "G":
 		exit()
 	elif info == "NF":
@@ -107,4 +107,5 @@ while True:
 	for line in cmsg:
 		msg = line.strip().split(" ")
 		if len(msg)==4 and float(msg[len(msg)-1]) > timestamp:
+			print(msg)
 			operation(msg)
