@@ -106,5 +106,5 @@ while True:
 	f.close()
 	for line in cmsg:
 		msg = line.strip().split(" ")
-		if len(msg)=4 and float(msg[len(msg)-1]) > timestamp:
+		if len(msg)==4 and float(msg[len(msg)-1]) > timestamp:
 			operation(msg)
