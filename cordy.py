@@ -67,7 +67,7 @@ def operation(msg):
 	info = msg[0]
 	ukko = 0
 	cname = msg[2]
-	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]
+	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]:
 		ukko += 1
 	global nodelist,cat,timestamp
 	if info = "G":
