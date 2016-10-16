@@ -73,6 +73,7 @@ def operation(msg):
 	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]:
 		ukko += 1
 	#global nodelist,cat,timestamp
+	print(ukko)
 	if info == "G":
 		exit()
 	elif info == "NF":
@@ -99,8 +100,6 @@ init()
 _thread.start_new_thread(autoAssign,(1,))
 while True:
 	#read cmsg every 2 second
-	print(cat)
-	print(nodelist)
 	time.sleep(2)
 	cmsg = linecache.getlines("cmsg")
 	for line in cmsg:
