@@ -45,7 +45,7 @@ def assign(name,cnode):
 			selected = random.randrange(0,len(nodelist))
 		#change node state
 		nodelist[selected][1]="s"
-		global cat
+		#global cat
 		cat[name] = "s"
 		node = nodelist[selected]
 	#assign a cat to an arbitrary node
@@ -69,7 +69,7 @@ def operation(msg):
 	cname = msg[2]
 	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]:
 		ukko += 1
-	global nodelist,cat,timestamp
+	#global nodelist,cat,timestamp
 	if info == "G":
 		exit()
 	elif info == "NF":
