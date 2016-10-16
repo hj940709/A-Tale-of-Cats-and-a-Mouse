@@ -63,6 +63,7 @@ def autoAssign(interval):
 		if cat["Jazzy"] == "w" or cat["Catty"] == "p" and assign("Catty",[]) == 2:
 			break
 		time.sleep(interval)
+	print("auto stopped")
 
 def operation(msg):
 	info = msg[0]
