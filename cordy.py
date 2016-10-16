@@ -104,6 +104,7 @@ while True:
 	time.sleep(2)
 	cmsg = linecache.getlines("cmsg")
 	for line in cmsg:
-		msg = line.strip().split(' ')
+		msg = line.strip().split(" ")
+		print(msg)
 		if float(msg[len(msg)-1]) > timestamp:
 			operation(msg)
