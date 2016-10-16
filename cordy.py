@@ -96,7 +96,7 @@ while True:
 	#read cmsg every 2 second
 	time.sleep(2)
 	cmsg = linecache.getlines("cmsg")
-	for line in cmsg
+	for line in cmsg:
 		msg = line.strip().split(' ')
 		if float(msg[len(msg)-1]) > timestamp:
 			operation(msg)
