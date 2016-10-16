@@ -18,7 +18,7 @@ timestamp=0.00001
 
 def init():
 #read node file
-	global nodelist
+	#global nodelist
 	for line in linecache.getlines("ukkonodes"):
 		if line.strip() != "":
 			nodelist.append([line.strip(),"u"])
@@ -36,8 +36,6 @@ def assign(name,cnode):
 	if counter == len(nodelist):
 		return 2
 	
-	print(name,cnode)
-	
 	#get login user name
 	username = os.popen("who am i").read().split(' ')[0] 
 	node = cnode
@@ -48,7 +46,7 @@ def assign(name,cnode):
 			selected = random.randrange(0,len(nodelist))
 		#change node state
 		nodelist[selected][1]="s"
-		global cat
+		#global cat
 		cat[name] = "s"
 		node = nodelist[selected]
 	#assign a cat to an arbitrary node
@@ -72,8 +70,7 @@ def operation(msg):
 	cname = msg[2]
 	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]:
 		ukko += 1
-	global nodelist,cat,timestamp
-	print(ukko,msg[1])
+	#global nodelist,cat,timestamp
 	if info == "G":
 		exit()
 	elif info == "NF":
@@ -106,6 +103,7 @@ _thread.start_new_thread(autoAssign,(1,))
 while True:
 	#read cmsg every 2 second
 	time.sleep(2)
+	print(cat)
 	f = open("cmsg","r")
 	cmsg = f.read().split("\n")
 	f.close()
