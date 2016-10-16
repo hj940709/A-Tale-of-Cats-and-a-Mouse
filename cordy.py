@@ -60,7 +60,6 @@ def autoAssign(interval):
 	while len(nodelist)>0:
 		if cat["Catty"] == "w" or cat["Jazzy"] == "p" and assign("Jazzy",[]) == 2:
 			break
-		time.sleep(interval)
 		if cat["Jazzy"] == "w" or cat["Catty"] == "p" and assign("Catty",[]) == 2:
 			break
 		time.sleep(interval)
