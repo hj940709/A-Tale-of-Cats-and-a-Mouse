@@ -20,7 +20,8 @@ def init():
 #read node file
 	global nodelist
 	for line in linecache.getlines("ukkonodes"):
-		nodelist.append([line.strip(),"u"])
+		if line.strip() != ""
+			nodelist.append([line.strip(),"u"])
 
 def assign(name,cnode):
 #assign cat to a node, if node is not given then choose an arbitrary node
