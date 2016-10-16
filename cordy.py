@@ -98,6 +98,8 @@ init()
 _thread.start_new_thread(autoAssign,(1,))
 while True:
 	#read cmsg every 2 second
+	print(cat)
+	print(nodelist)
 	time.sleep(2)
 	cmsg = linecache.getlines("cmsg")
 	for line in cmsg:
