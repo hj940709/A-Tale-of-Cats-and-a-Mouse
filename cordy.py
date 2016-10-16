@@ -45,16 +45,13 @@ def assign(name,cnode):
 		selected = -1
 		while selected == -1 or nodelist[selected][0] == "" or nodelist[selected][1] != "u":
 			selected = random.randrange(0,len(nodelist))
-		node = nodelist[selected]
-	#assign a cat to an arbitrary node
-	try:
-		os.system("ssh -p 22 "+username+"@"+node[0]+" \'python3 chase_cat.py S "+name+"\'")
 		#change node state
 		nodelist[selected][1]="s"
 		#global cat
 		cat[name] = "s"
-	except:
-		return 0
+		node = nodelist[selected]
+	#assign a cat to an arbitrary node
+	os.system("ssh -p 22 "+username+"@"+node[0]+".hpc.cs.helsinki.fi \'python3 chase_cat.py S "+name+"\'")
 	return 0
 	
 def autoAssign(interval):
@@ -88,7 +85,7 @@ def operation(msg):
 			#get login user name
 			username = os.popen("who am i").read().split(' ')[0]
 			#assign Jazzy to attack
-			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+" \'python3 chase_cat.py A Jazzy\'")
+			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+".hpc.cs.helsinki.fi \'python3 chase_cat.py A Jazzy\'")
 	timestamp = msg[3]
 	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
 		assign("Catty",nodelist[ukko])
