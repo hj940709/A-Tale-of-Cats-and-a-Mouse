@@ -14,7 +14,7 @@ cat = {"Jazzy":"p","Catty":"p"}
 nodelist = []
 
 #timestamp for update state
-timestamp=0
+timestamp=0.00001
 
 def init():
 #read node file
@@ -88,7 +88,8 @@ def operation(msg):
 			username = os.popen("who am i").read().split(' ')[0]
 			#assign Jazzy to attack
 			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+".hpc.cs.helsinki.fi \'python3 chase_cat.py A Jazzy\'")
-	global timestamp = msg[3]
+	global timestamp 
+	timestamp = float(msg[3])
 	print(cat)
 	print(nodelist)
 	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
