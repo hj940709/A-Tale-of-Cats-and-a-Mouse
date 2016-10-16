@@ -48,7 +48,7 @@ def assign(name,cnode):
 			selected = random.randrange(0,len(nodelist))
 		#change node state
 		nodelist[selected][1]="s"
-		#global cat
+		global cat
 		cat[name] = "s"
 		node = nodelist[selected]
 	#assign a cat to an arbitrary node
@@ -72,7 +72,7 @@ def operation(msg):
 	cname = msg[2]
 	while ukko<len(nodelist) and nodelist[ukko][0]!=msg[1]:
 		ukko += 1
-	#global nodelist,cat,timestamp
+	global nodelist,cat,timestamp
 	print(ukko,msg[1])
 	if info == "G":
 		exit()
@@ -88,10 +88,14 @@ def operation(msg):
 			username = os.popen("who am i").read().split(' ')[0]
 			#assign Jazzy to attack
 			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+".hpc.cs.helsinki.fi \'python3 chase_cat.py A Jazzy\'")
-	global timestamp 
 	timestamp = float(msg[3])
-	print(cat)
-	print(nodelist)
+	
+	ukko = 0
+	while ukko<len(nodelist) and nodelist[ukko][1] != "p":
+		ukko += 1
+	if ukko == len(nodelist):
+		return
+		
 	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
 		assign("Catty",nodelist[ukko])
 	elif cat["Jazzy"] == "p" and cat["Catty"] == "w":
