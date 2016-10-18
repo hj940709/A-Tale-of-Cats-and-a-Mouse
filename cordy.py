@@ -55,7 +55,7 @@ def assign(name,cnode):
 	os.system("ssh -p 22 "+username+"@"+node[0]+".hpc.cs.helsinki.fi \'python3 "+path+"chase_cat.py S "+name+"\'")
 	return 0
 	
-def autoAssign(interval):
+def autoAssign():
 #auto assign cat to node which is neither under searching nor has been searched
 #if one cat is in waiting state, auto assign will stop
 	while len(nodelist)>0:
@@ -63,7 +63,7 @@ def autoAssign(interval):
 			break
 		if cat["Jazzy"] == "w" or cat["Catty"] == "p" and assign("Catty",[]) == 2:
 			break
-		time.sleep(interval)
+		
 	print("auto stopped")
 
 def operation(msg):
@@ -104,7 +104,7 @@ def operation(msg):
 		assign("Jazzy",nodelist[ukko])
 
 init()
-_thread.start_new_thread(autoAssign,(1,))
+_thread.start_new_thread(autoAssign,(,))
 while True:
 	#read cmsg every 2 second
 	time.sleep(2)
