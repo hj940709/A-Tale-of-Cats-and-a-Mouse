@@ -100,8 +100,6 @@ time.sleep(6)
 _thread.start_new_thread(assign,("Catty",[],))
 while True:
 	#read cmsg every 2 second
-	time.sleep(2)
-	print(cat)
 	f = open("cmsg","r")
 	cmsg = f.read().split("\n")
 	f.close()
@@ -110,3 +108,4 @@ while True:
 		if len(msg)==4 and float(msg[len(msg)-1]) > timestamp:
 			print(msg)
 			operation(msg)
+	time.sleep(2)
