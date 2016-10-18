@@ -68,7 +68,7 @@ def operation(msg):
 		cat[cname] = "p"
 		nodelist.remove(nodelist[ukko])
 		if cat["Catty"] != "w" and cat["Jazzy"] !="w" :
-			assign(cname,[])
+			_thread.start_new_thread(assign,(cname,[],))
 	elif info == "F":
 		cat[cname] = "w"
 		if nodelist[ukko][1] != "p":
@@ -95,8 +95,9 @@ def operation(msg):
 		assign("Jazzy",nodelist[ukko])
 
 init()
-assign("Jazzy",[])
-assign("Catty",[])
+_thread.start_new_thread(assign,("Jazzy",[],))
+time.sleep(6)
+_thread.start_new_thread(assign,("Catty",[],))
 while True:
 	#read cmsg every 2 second
 	time.sleep(2)
@@ -107,5 +108,5 @@ while True:
 	for line in cmsg:
 		msg = line.strip().split(" ")
 		if len(msg)==4 and float(msg[len(msg)-1]) > timestamp:
-			print(msg,timestamp)
+			print(msg)
 			operation(msg)
