@@ -54,7 +54,7 @@ def assign(name,cnode):
 	#assign a cat to an arbitrary node
 	os.system("ssh -p 22 "+username+"@"+node[0]+".hpc.cs.helsinki.fi \'python3 "+path+"chase_cat.py S "+name+"\'")
 	return 0
-	
+
 def operation(msg):
 	info = msg[0]
 	ukko = 0
@@ -89,13 +89,9 @@ def operation(msg):
 	if ukko == len(nodelist):
 		return
 		
-	if cat["Jazzy"] == "w":
-		while cat["Catty"] != "p":
-			time.sleep(0.5)
+	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
 		assign("Catty",nodelist[ukko])
-	elif cat["Catty"] == "w":
-		while cat["Jazzy"] != "p":
-			time.sleep(0.5)
+	if cat["Catty"] == "w" and cat["Jazzy"] == "p":
 		assign("Jazzy",nodelist[ukko])
 
 init()
