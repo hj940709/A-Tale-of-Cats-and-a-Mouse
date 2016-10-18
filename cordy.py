@@ -93,8 +93,8 @@ def operation(msg):
 		while cat["Catty"] != "p":
 			time.sleep(0.5)
 		assign("Catty",nodelist[ukko])
-	elif cat["Jazzy"] == "p":
-		while cat["Catty"] != "p":
+	elif cat["Catty"] == "w":
+		while cat["Jazzy"] != "p":
 			time.sleep(0.5)
 		assign("Jazzy",nodelist[ukko])
 
