@@ -90,9 +90,9 @@ def operation(msg):
 		return
 		
 	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
-		assign("Catty",nodelist[ukko])
+		_thread.start_new_thread(assign,("Catty",nodelist[ukko],))
 	if cat["Catty"] == "w" and cat["Jazzy"] == "p":
-		assign("Jazzy",nodelist[ukko])
+		_thread.start_new_thread(assign,("Jazzy",nodelist[ukko],))
 
 init()
 _thread.start_new_thread(assign,("Jazzy",[],))
