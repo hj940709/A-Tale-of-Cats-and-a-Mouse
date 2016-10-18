@@ -89,9 +89,13 @@ def operation(msg):
 	if ukko == len(nodelist):
 		return
 		
-	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
+	if cat["Jazzy"] == "w":
+		while cat["Catty"] != "p":
+			time.sleep(0.5)
 		assign("Catty",nodelist[ukko])
-	elif cat["Jazzy"] == "p" and cat["Catty"] == "w":
+	elif cat["Jazzy"] == "p":
+		while cat["Catty"] != "p":
+			time.sleep(0.5)
 		assign("Jazzy",nodelist[ukko])
 
 init()
