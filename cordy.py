@@ -104,7 +104,7 @@ def operation(msg):
 		assign("Jazzy",nodelist[ukko])
 
 init()
-_thread.start_new_thread(autoAssign,(,))
+_thread.start_new_thread(autoAssign,())
 while True:
 	#read cmsg every 2 second
 	time.sleep(2)
