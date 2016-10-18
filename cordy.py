@@ -37,7 +37,9 @@ def assign(name,cnode):
 		return 2
 	
 	#get login user name
-	username = os.popen("who am i").read().split(' ')[0] 
+	username = os.popen("who am i").read().split(' ')[0]
+	#get current path
+	path = os.popen("pwd").read().strip()+"/"
 	node = cnode
 	if len(node) < 2 :
 		#choose a arbitrary node
@@ -50,7 +52,7 @@ def assign(name,cnode):
 		cat[name] = "s"
 		node = nodelist[selected]
 	#assign a cat to an arbitrary node
-	os.system("ssh -p 22 "+username+"@"+node[0]+".hpc.cs.helsinki.fi \'python3 chase_cat.py S "+name+"\'")
+	os.system("ssh -p 22 "+username+"@"+node[0]+".hpc.cs.helsinki.fi \'python3 "+path+"chase_cat.py S "+name+"\'")
 	return 0
 	
 def autoAssign(interval):
@@ -83,8 +85,10 @@ def operation(msg):
 		else:
 			#get login user name
 			username = os.popen("who am i").read().split(' ')[0]
+			#get current path
+			path = os.popen("pwd").read().strip()+"/"
 			#assign Jazzy to attack
-			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+".hpc.cs.helsinki.fi \'python3 chase_cat.py A Jazzy\'")
+			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+".hpc.cs.helsinki.fi \'python3 "+path+"chase_cat.py A Jazzy\'")
 	global timestamp
 	timestamp = float(msg[3])
 	
