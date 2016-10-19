@@ -1,0 +1,33 @@
+﻿ A Tale of Cats and Mouse
+Hou, Jue
+jue.hou@helsinki.fi
+Solution
+Mouse keeps an open socket and response to any coming message. For “MEOW”, it will wait 12 seconds then send “OUCH”. For other message, it will response to confirm its existence.
+Chase cat, Jazzy and Catty, will send an arbitrary message to mouse to test if mouse is in the current node. Then they will send the result to Listy. There are three result in all: “F”, “NF” and “G”. Each of them represent for Found, Not Found and  Got. The format of the message is as followed:
+(message) (ukkonode) (catname)
+Listy keeps an open socket too. Receiving message from chase cat, it will add a timestamp to each message and then write it to the file “cmsg”. 
+Cordy will periodically read the “cmsg” file. By keeping a timestamp itself, it can response to the new messages and update its own timestamp. Cordy also keeps a list of ukko nodes and a list of chase cats. There are three state for ukkonodes: “u”, “f”, “s”, representing for unknown , found and under searching. For chase cats, there are three states as well: “p”, “w” and “s”, representing for pending , waiting for double check and searching. According to the new messages, state of cat and the state of nodes, cordy will assgin a cat, double check a node or give a attack command.
+
+Executing Process
+Mouse:
+Read from port_number and start to listen to the port.
+Response to a coming message. If it is a “MEOW”, wait 12 seconds and send a “OUCH”. After that, terminate itself. If the message is not a “MEOW”, send a “Mouse Confirmed” message to sender.
+
+Listy:
+Read from port_number and start to listen to the port.
+After receiving message from either of chase cats, add a timestamp to each message and write it all to the “cmsg” file.
+If the message is a G message, terminate itself
+
+Chase Cats (Jazzy amd Catty):
+Get the name and command from command line interface. Here, Command is refer to searching and attacking.
+Get the mouse port from port_number and send a test message to mouse.
+The result is “NF” by default. If mouse response, set the result to “F”. 
+Send the result along with the current node name and cat name to the Listy.
+
+Cordy:
+Built a map for cat and a list for ukkonodes. 
+Read the “cmsg” file every 2 seconds. Process the file line by line.
+Compare the timestamp in each message and its own timestamp, ignore all the messages with a smaller and execute operation for messages which have a larger timestamp. Operations are as followed:
+For NF message, if no cat is in “w” state, assign the cat mentioned in this message to another arbitrary node. Remove the node mentioned in the message from the ukkonode list. If there is already cat in “w” state. Assign this cat to search the node marked as “f”.
+For F message, mark the current cat as “w”. Mark the node as “f” as well if it is not in “f” state. If it is already  in “f” state, assign “Jazzy” to have an attack.
+For G message, terminate itself .
