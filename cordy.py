@@ -69,6 +69,16 @@ def operation(msg):
 		nodelist.remove(nodelist[ukko])
 		if cat["Catty"] != "w" and cat["Jazzy"] !="w" :
 			_thread.start_new_thread(assign,(cname,[],))
+		elif cat["Jazzy"] == "w" and cat["Catty"] == "p":
+			ukko = 0
+			while ukko<len(nodelist) and nodelist[ukko][1] != "p":
+				ukko += 1
+			_thread.start_new_thread(assign,("Catty",nodelist[ukko],))
+		elif cat["Catty"] == "w" and cat["Jazzy"] == "p":
+			ukko = 0
+			while ukko<len(nodelist) and nodelist[ukko][1] != "p":
+				ukko += 1
+			_thread.start_new_thread(assign,("Jazzy",nodelist[ukko],))
 	elif info == "F":
 		cat[cname] = "w"
 		if nodelist[ukko][1] != "p":
@@ -83,17 +93,6 @@ def operation(msg):
 	global timestamp
 	timestamp = float(msg[3])
 	
-	ukko = 0
-	while ukko<len(nodelist) and nodelist[ukko][1] != "p":
-		ukko += 1
-	if ukko == len(nodelist):
-		return
-		
-	if cat["Jazzy"] == "w" and cat["Catty"] == "p":
-		_thread.start_new_thread(assign,("Catty",nodelist[ukko],))
-	if cat["Catty"] == "w" and cat["Jazzy"] == "p":
-		_thread.start_new_thread(assign,("Jazzy",nodelist[ukko],))
-
 init()
 _thread.start_new_thread(assign,("Jazzy",[],))
 time.sleep(6)
