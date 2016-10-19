@@ -1,6 +1,9 @@
 import socket,linecache,os,time,_thread
 
 def precaution():
+#this function is not required
+#terminate itself in an hour automatically
+#prevent from leaving it running under any circumstances
 	time.sleep(3600)
 	os._exit(0)
 _thread.start_new_thread(precaution,())

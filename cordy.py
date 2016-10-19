@@ -1,6 +1,10 @@
 import time,os,linecache,random,_thread
 
+
 def precaution():
+#this function is not required
+#terminate itself in an hour automatically
+#prevent from leaving it running under any circumstances
 	time.sleep(3600)
 	os._exit(0)
 _thread.start_new_thread(precaution,())
@@ -68,7 +72,11 @@ def operation(msg):
 		cat[cname] = "p"
 		nodelist.remove(nodelist[ukko])
 		if cat["Catty"] != "w" and cat["Jazzy"] !="w" :
+			#none of cat find the mouse
+			#continue to assign available cat to an arbitrary node
 			_thread.start_new_thread(assign,(cname,[],))
+		#one cat found mouse
+		#locate the target node and send the another cat for double check
 		elif cat["Jazzy"] == "w" and cat["Catty"] == "p":
 			ukko = 0
 			while ukko<len(nodelist) and nodelist[ukko][1] != "p":
@@ -82,8 +90,10 @@ def operation(msg):
 	elif info == "F":
 		cat[cname] = "w"
 		if nodelist[ukko][1] != "p":
+			#One cat find the mouse for first time
 			nodelist[ukko][1] = "p"
 		else:
+			#Another cat find the mouse again and start an attack			
 			#get login user name
 			username = os.popen("who am i").read().split(' ')[0]
 			#get current path
@@ -91,7 +101,7 @@ def operation(msg):
 			#assign Jazzy to attack
 			os.system("ssh -p 22 "+username+"@"+nodelist[ukko][0]+".hpc.cs.helsinki.fi \'python3 "+path+"chase_cat.py A Jazzy\'")
 	global timestamp
-	timestamp = float(msg[3])
+	timestamp = float(msg[3]) #update time stamp
 	
 init()
 _thread.start_new_thread(assign,("Jazzy",[],))
@@ -105,6 +115,7 @@ while True:
 	for line in cmsg:
 		msg = line.strip().split(" ")
 		if len(msg)==4 and float(msg[len(msg)-1]) > timestamp:
+		#ignore old time stamp and response to larger time stamp
 			print(msg)
 			operation(msg)
 	time.sleep(2)
