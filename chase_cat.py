@@ -37,7 +37,7 @@ def report(msg):
 		s.close()
 
 def search():
-# 8 seconds for searching
+# 12 seconds for searching
 #search for mouse
 	time.sleep(12)
 	s = socket.socket()
